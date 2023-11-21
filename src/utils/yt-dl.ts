@@ -30,7 +30,6 @@ export class MusicPlayer{
                 addHeader: ['referer:youtube.com', 'user-agent:googlebot'],
                 output: staticPath + `/${hashTitle}.%(ext)s`,
             })
-            // DISCORD_TOKEN="ODYxNjcyODkxMDQwNzkyNTc2.Gw6Ilx.gD62hYm2BrV5I7ttXBCqFKqrYaEBzSUFaKxR1Q"
 
             // console.log(response)
             
