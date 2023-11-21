@@ -1,10 +1,11 @@
 import { Client, Message } from "discord.js";
+import { ClientExtension } from "../client";
 
 interface RunCommand {
-    (client: Client, message: Message, args: string[]): any
+    (client: ClientExtension, message: Message, args: string[]): any
 }
 
-export interface Command {
+export interface Command{
     name: string,
     description?: string,
     aliases?: string[],

@@ -1,6 +1,6 @@
-import { AudioPlayer, createAudioPlayer, createAudioResource, joinVoiceChannel } from "@discordjs/voice";
+import { AudioPlayer, VoiceConnection, createAudioResource, joinVoiceChannel } from "@discordjs/voice";
 import { InternalDiscordGatewayAdapterCreator, Message } from "discord.js";
-import youtubedl from "youtube-dl-exec"
+import { downloadFromYoutube } from "./download-from-youtube";
 
 interface MusicPlayerProps {
     url: string;
@@ -9,6 +9,7 @@ interface MusicPlayerProps {
 interface ListernsProps {
     channelId: string;
     musics: string[];
+    connection: VoiceConnection;
 }
 
 export class MusicPlayer{
@@ -18,45 +19,60 @@ export class MusicPlayer{
         /* Get User Props */
         const channel = message.member?.voice.channel?.id
         if(!channel) throw new Error("You must be in a voice channel to use this command");
-        /* Download Music */
-        const staticPath = __dirname + "/../musics"
-        const hashTitle = url.split("v=")[1]
-        try {
-            await youtubedl(url, {
-                format: "bestaudio/best",
-                noCheckCertificates: true,
-                noWarnings: true,
-                preferFreeFormats: true,
-                addHeader: ['referer:youtube.com', 'user-agent:googlebot'],
-                output: staticPath + `/${hashTitle}.%(ext)s`,
-            })
 
-            // console.log(response)
-            
-            const seachChannel = this.listeners.find((listener)=>listener.channelId === channel)
-            if(seachChannel){
-                seachChannel.musics.push(staticPath + `/${hashTitle}.webm`)
-            }
-            else{
-                this.listeners.push({
-                    channelId: channel,
-                    musics: [staticPath + `/${hashTitle}.webm`]
-                })
-            }
-        } catch (error) {
-            console.log(error)
+        /* Download from Youtube */
+        var path = ""
+        await downloadFromYoutube(url).then((response)=>{
+            path = response.path
+        })
+
+        /* Verify if exists others musisc on queue */
+        const seachChannel = this.listeners.find((listener)=>listener.channelId === channel)
+
+        if(seachChannel){
+            seachChannel.musics.push(path)
+
         }
-        return {
-            play: (player: AudioPlayer) => {
-                const connection = joinVoiceChannel({
+        else{
+            this.listeners.push({
+                channelId: channel,
+                musics: [path],
+                connection: joinVoiceChannel({
                     channelId: channel,
                     guildId: message.member?.voice.guild.id as string,
                     adapterCreator: message.member?.voice.guild.voiceAdapterCreator as InternalDiscordGatewayAdapterCreator
                 })
-                const resource = createAudioResource(staticPath + `/${hashTitle}.webm`);
-                player.play(resource);
-                connection.subscribe(player);
-            }
+            })
+        }
+
+        return {
+            play: (player: AudioPlayer)=>{
+                const seachChannel = this.listeners.find((listener)=>listener.channelId === channel)
+                if(seachChannel){
+                    const resource = createAudioResource(path)
+                    player.play(resource)
+                    player
+                    seachChannel.connection.subscribe(player)
+                }
+            },
+        }
+    }
+
+    async Stop(channelId: string){
+        const seachChannel = this.listeners.find((listener)=>listener.channelId === channelId)
+        if(seachChannel){
+            seachChannel.connection.destroy()
+        }else{
+            throw new Error("You must be in a voice channel to use this command");
+        }
+    }
+
+    async Queue(channelId: string){
+        const seachChannel = this.listeners.find((listener)=>listener.channelId === channelId)
+        if(seachChannel){
+            return seachChannel.musics
+        }else{
+            throw new Error("You must be in a voice channel to use this command");
         }
     }
 }
