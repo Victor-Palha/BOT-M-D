@@ -25,7 +25,7 @@ export class MusicPlayer{
     listeners: ListernsProps[] = []
 
     async Player({url, message}: MusicPlayerProps){
-        console.log(this.listeners)
+        // console.log(this.listeners)
         /* Get User Props */
         const channel = message.member?.voice.channel?.id
         if(!channel) throw new Error("You must be in a voice channel to use this command");
@@ -112,7 +112,7 @@ export class MusicPlayer{
             })
 
         }else{
-            throw new Error("You must be in a voice channel to use this command");
+            throw new Error("You must be in a voice channel and have to be playing a music to use this command");
         }
     }
 
@@ -121,7 +121,7 @@ export class MusicPlayer{
         if(seachChannel){
             return seachChannel.musics
         }else{
-            throw new Error("You must be in a voice channel to use this command");
+            throw new Error("You must be in a voice channel and have to be playing a music to use this command");
         }
     }
 
@@ -139,7 +139,7 @@ export class MusicPlayer{
             }
 
         }else{
-            throw new Error("You must be in a voice channel to use this command");
+            throw new Error("You must be in a voice channel and have to be playing a music to use this command");
         }
     
     }

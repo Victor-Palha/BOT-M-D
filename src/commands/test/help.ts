@@ -1,3 +1,4 @@
+import { EmbedBuilder } from "discord.js";
 import { Command } from "../../interfaces";
 
 export const command: Command = {
@@ -12,7 +13,18 @@ export const command: Command = {
                 aliases: command.aliases
             }
         })
+        const embed = new EmbedBuilder()
+            .setTitle("Monkeys & Dungeons: DM, Help!")
+            .setDescription("Help Menu")
+            .setImage(message.guild?.iconURL() as string)
+            .setTimestamp(new Date())
+            .setFields(commands.map((command)=>({
+                name: `!${command.name}`,
+                value: command.description
+            })))
 
-        message.channel.send(JSON.stringify(commands, null, 2))
+        message.channel.send({
+            embeds: [embed]
+        })
     }
 }

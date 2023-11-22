@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { Client, Collection, GatewayIntentBits, SlashCommandBuilder } from "discord.js";
+import { Client, Collection, GatewayIntentBits } from "discord.js";
 import {Command, Config, Event} from "../interfaces"
 import { config } from "../env";
 import { join } from "path";

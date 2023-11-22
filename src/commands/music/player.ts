@@ -4,7 +4,7 @@ import {musicPlayer} from "../../utils/MusicPlayer";
 
 export const command: Command = {
     name: "play",
-    description: "Play a song from youtube",
+    description: "Play a song from youtube by url example: !play https://www.youtube.com/watch?v=5qap5aO4i9A",
     aliases: ["p"],
 
     run: async (client, message, args)=>{

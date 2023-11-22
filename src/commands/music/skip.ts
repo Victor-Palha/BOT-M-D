@@ -4,7 +4,7 @@ import { musicPlayer } from "../../utils/MusicPlayer"
 
 export const command: Command = {
     name: "skip",
-    description: "Skip the current song",
+    description: "Skip the current song to the next one",
     aliases: ["sk"],
     run: async (client, message, args)=>{
         await musicPlayer.Skip({

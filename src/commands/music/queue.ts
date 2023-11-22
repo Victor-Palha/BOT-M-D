@@ -4,7 +4,7 @@ import { musicPlayer } from "../../utils/MusicPlayer";
 
 export const command: Command = {
     name: "queue",
-    description: "Show the queue",
+    description: "Show the queue from the music player",
     aliases: ["q"],
     run: async (client, message, args)=>{
         await musicPlayer.Queue(message.member?.voice.channel?.id as string).then((res)=>{

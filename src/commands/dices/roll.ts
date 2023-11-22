@@ -18,12 +18,16 @@ export const command: Command = {
             modifier = parseInt(args[0].split("-")[1]);
         }
         var amount: number = parseInt(args[0].split("d")[0]);
+        if(!amount) amount = 1;
         var dice: number = parseInt(args[0].split("d")[1]);
+        if(!dice){
+            message.channel.send("You need to specify a dice dumbass!");
+            return
+        }
         
-        if(amount > 100 || amount < 1) return message.channel.send("You can't roll that amount of dices");
+        if(amount > 100 || amount < 1) return message.channel.send("Are you kidding me? You can't roll that amount of dices");
 
-
-        const {dices, total, criticals, criticalsError} = RollDice({amount, dice, modifier, modifierType});
+        const {dices, total, advantage, disadvantage} = RollDice({amount, dice, modifier, modifierType});
 
         const embed = new EmbedBuilder()
             .setTitle("Monkeys & Dungeons Roll Dice")
@@ -37,14 +41,18 @@ export const command: Command = {
                 {
                     name: "Total",
                     value: total.toString()
-                },{
-                    name: "Criticals",
-                    value: criticals.toString()
-                },{
-                    name: "Criticals Error",
-                    value: criticalsError.toString()
                 }
             ])
+            if(amount > 1){
+                embed.addFields({
+                    name: "In advantage",
+                    value: advantage.toString()
+                })
+                embed.addFields({
+                    name: "In Disadvantage",
+                    value: disadvantage.toString()
+                })
+            }
 
         message.channel.send({
             embeds: [embed]

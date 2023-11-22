@@ -3,7 +3,7 @@ import { musicPlayer } from "../../utils/MusicPlayer";
 
 export const command: Command = {
     name: "stop",
-    description: "Stop the music",
+    description: "Stop the current song and clear the queue",
     aliases: ["st"],
     run: async (client, message, args)=>{
         await musicPlayer.Stop(message.member?.voice.channel?.id as string).then((res)=>{
