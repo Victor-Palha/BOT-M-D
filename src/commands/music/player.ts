@@ -1,6 +1,6 @@
 import {createAudioPlayer} from "@discordjs/voice";
 import { Command } from "../../interfaces";
-import {musicPlayer} from "../../utils/yt-dl";
+import {musicPlayer} from "../../utils/MusicPlayer";
 
 export const command: Command = {
     name: "play",

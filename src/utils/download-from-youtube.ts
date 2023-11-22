@@ -14,6 +14,7 @@ export async function downloadFromYoutube(url: string){
     })
 
     return {
-        path: staticPath + `/${hashTitle}.webm`
+        path: staticPath + `/${hashTitle}.webm`,
+        url
     }
 }

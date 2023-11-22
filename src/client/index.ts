@@ -42,9 +42,6 @@ export class ClientExtension extends Client {
         const eventPath = join(__dirname, "..", "events")
         readdirSync(eventPath).forEach(async (file)=>{
             let {event}: {event: Event} = await import(`${eventPath}/${file}`);
-            // this.events.set(event.name, event);
-            // console.log(this.events)
-            // this.on(event.name, await event.run.bind(null, this));
             if (event.once) {
                 this.once(event.name, (...args) => event.run(this, ...args));
             } else {
