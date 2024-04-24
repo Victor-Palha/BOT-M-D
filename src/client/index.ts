@@ -31,7 +31,7 @@ export class ClientExtension extends Client {
                 // import {command} from "../commands/commands.ts"
                 const {command} = require(`${commandPath}/${dir}/${commands[file]}`);
                 this.commands.set(command.name, command as Command);
-                if(command?.aliases.length !== 0){
+                if(command?.aliases && command?.aliases.length !== 0){
                     command.aliases.forEach((alias: any)=>{
                         this.aliases.set(alias, command);
                     })
