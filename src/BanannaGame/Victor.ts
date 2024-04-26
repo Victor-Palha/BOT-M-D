@@ -2,7 +2,7 @@ import { Magia, Minion } from "./intarfaces";
 
 export const familiarDoSangueSombrio: Minion = {
     id: 1,
-    name: "Familiar do Sangue Sombrio",
+    name: "Familiar do Sangue Sombrio - 🧛🏻",
     cost: 1,
     type: "minion",
     atk: 1,
@@ -12,7 +12,7 @@ export const familiarDoSangueSombrio: Minion = {
 
 export const almaDoSangueSombrio: Minion = {
     id: 2,
-    name: "Alma do Sangue Sombrio",
+    name: "Alma do Sangue Sombrio - 🧛🏻",
     cost: 2,
     type: "minion",
     atk: 1,
@@ -22,7 +22,7 @@ export const almaDoSangueSombrio: Minion = {
 
 export const criaVampiricaDoSangueSombrio: Minion = {
     id: 3,
-    name: "Cria Vampírica do Sangue Sombrio",
+    name: "Cria Vampírica do Sangue Sombrio - 🧛🏻",
     cost: 2,
     type: "minion",
     atk: 2,
@@ -32,7 +32,7 @@ export const criaVampiricaDoSangueSombrio: Minion = {
 
 export const necromanteDoSangueSombrio: Minion = {
     id: 4,
-    name: "Necromante do Sangue Sombrio",
+    name: "Necromante do Sangue Sombrio - 🧛🏻",
     cost: 3,
     type: "minion",
     atk: 3,
@@ -42,7 +42,7 @@ export const necromanteDoSangueSombrio: Minion = {
 
 export const dhampirDoSangueSombrio: Minion = {
     id: 5,
-    name: "Dhampir do Sangue Sombrio",
+    name: "Dhampir do Sangue Sombrio - 🧛🏻",
     cost: 4,
     type: "minion",
     atk: 4,
@@ -52,7 +52,7 @@ export const dhampirDoSangueSombrio: Minion = {
 
 export const condeDoReinoDasBrumas: Minion = {
     id: 6,
-    name: "Conde do Reino das Brumas",
+    name: "Conde do Reino das Brumas - 🧛🏻",
     cost: 5,
     type: "minion",
     atk: 5,
@@ -64,7 +64,7 @@ export const condeDoReinoDasBrumas: Minion = {
 
 export const pactoSombrio: Magia = {
     id: 7,
-    name: "Pacto Sombrio",
+    name: "Pacto Sombrio - 🪄",
     cost: 1,
     type: "spell",
     effect: "Quando esta carta for ativada, seu avatar perde 1 ponto de vida; se isso acontecer, invoque um token 'Zumbi do Sangue Sombrio' 1/1",
@@ -74,7 +74,7 @@ export const pactoSombrio: Magia = {
 
 export const servoDoSangueSombrio: Magia = {
     id: 8,
-    name: "Servo do Sangue Sombrio",
+    name: "Servo do Sangue Sombrio - 🪄",
     cost: 2,
     type: "spell",
     effect: "Escolha uma carta 'Sangue Sombrio' do seu cemitério e invoque no seu campo.",
@@ -84,7 +84,7 @@ export const servoDoSangueSombrio: Magia = {
 
 export const frenesiSanguinario: Magia = {
     id: 9,
-    name: "Frenesi Sanguinário",
+    name: "Frenesi Sanguinário - 🪄",
     cost: 2,
     type: "spell",
     effect: "Quando esta carta for ativada, todas as cartas 'Sangue Sombrio' ganham +2 de ataque até final do turno.",
@@ -94,7 +94,7 @@ export const frenesiSanguinario: Magia = {
 
 export const dominioDoMedo: Magia = {
     id: 10,
-    name: "Domínio do Medo",
+    name: "Domínio do Medo - 🪄",
     cost: 3,
     type: "spell",
     effect: "Quando esta carta for ativada, todas as cartas do oponente perdem 1 ponto de defesa, até final do turno.",
@@ -104,7 +104,7 @@ export const dominioDoMedo: Magia = {
 
 export const luaCheia: Magia = {
     id: 11,
-    name: "Lua Cheia",
+    name: "Lua Cheia - 🪄",
     cost: 5,
     type: "spell",
     effect: "Quando esta carta for ativada, todas as cartas 'Sangue Sombrio' causam 1 ponto de sangramento quando causam dano, até o final do turno.",
@@ -114,7 +114,7 @@ export const luaCheia: Magia = {
 
 export const brumasDoReinoVampirico: Magia = {
     id: 12,
-    name: "Brumas do Reino Vampírico",
+    name: "Brumas do Reino Vampírico - 🪄",
     cost: 7,
     type: "spell",
     effect: "Quando esta carta for ativada, todas as cartas do oponente marcadas com sangramento são enviadas para o cemitério.",

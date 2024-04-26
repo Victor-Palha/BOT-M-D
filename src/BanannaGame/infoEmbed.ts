@@ -11,7 +11,7 @@ export function infoEmbed(playerOne: Player, playerTwo: Player, turnOwner: strin
 
     const embed_player1 = new EmbedBuilder()
     .setTitle("Roger Hand")
-    .setDescription(`Roger has ${playerTwo.mana} mana and ${playerTwo.spellMana} spell mana`)
+    .setDescription(`Roger has ${playerTwo.mana} mana and ${playerTwo.spellMana} spell mana - HP: ${playerTwo.hp} ♥️`)
     .setFields([
         {
             name: "Hand",
@@ -28,7 +28,7 @@ export function infoEmbed(playerOne: Player, playerTwo: Player, turnOwner: strin
 
     const embed_player2 = new EmbedBuilder()
     .setTitle("Victor Hand")
-    .setDescription(`Victor has ${playerOne.mana} mana and ${playerOne.spellMana} spell mana`)
+    .setDescription(`Victor has ${playerOne.mana} mana and ${playerOne.spellMana} spell mana - HP: ${playerOne.hp} ♥️`)
     .setFields([
         {
             name: "Field",

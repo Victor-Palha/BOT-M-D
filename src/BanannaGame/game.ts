@@ -31,32 +31,10 @@ export class Games{
             this.round++;
             this.player1.addMana(this.round);
             this.player2.addMana(this.round);
-            if(this.turnOwner == this.player1.name){
-                this.player1.drawCard();
-            }else{
-                this.player2.drawCard();
-            }
+            this.player1.drawCard();
+            this.player2.drawCard();
         }
         this.turn++;
-    }
-
-    public attack(attacker: number, target: number){
-        const minionAttacker = this.turnOwner == this.player1.name ? this.player1.field[attacker] : this.player2.field[attacker];
-        const minionTarget = this.turnOwner == this.player1.name ? this.player2.field[target] : this.player1.field[target];
-
-        if(minionAttacker == null || minionTarget == null){
-            return;
-        }
-
-        minionTarget.def -= minionAttacker.atk;
-        minionAttacker.def -= minionTarget.atk;
-
-        if(minionAttacker.def <= 0){
-            this.turnOwner == this.player1.name ? this.player1.field[attacker] = null : this.player2.field[attacker] = null;
-        }
-        if(minionTarget.def <= 0){
-            this.turnOwner == this.player1.name ? this.player2.field[target] = null : this.player1.field[target] = null;
-        }
     }
 
     private selectPlayerTurn(){
@@ -66,7 +44,6 @@ export class Games{
         } else {
             this.turnOwner = this.player2.name;
         }
-
     }
 
 }

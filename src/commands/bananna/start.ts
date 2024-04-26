@@ -5,8 +5,8 @@ import { GAME } from "../..";
 export const command: Command = {
     name: "startBananna",
     description: "Start Bananna Card",
-    aliases: ["sb"],
-    run: async (client, message, args) => {
+    aliases: ["start"],
+    run: async (_client, message, _args) => {
         message.channel.send("Starting Bananna Game...");
         GAME.start()
 
@@ -18,7 +18,7 @@ export const command: Command = {
 
         const embed = new EmbedBuilder()
             .setTitle("Roger Hand")
-            .setDescription(`Roger has ${GAME.player2.mana} mana and ${GAME.player2.spellMana} spell mana`)
+            .setDescription(`Roger has ${GAME.player2.mana} mana and ${GAME.player2.spellMana} spell mana - HP: ${GAME.player2.hp} ♥️`)
             .setFields([
                 {
                     name: "Hand",
@@ -35,7 +35,7 @@ export const command: Command = {
             .setDescription(`Turn: ${GAME.turnOwner}`)
         const embed2 = new EmbedBuilder()
             .setTitle("Victor Hand")
-            .setDescription(`Victor has ${GAME.player1.mana} mana and ${GAME.player1.spellMana} spell mana`)
+            .setDescription(`Victor has ${GAME.player1.mana} mana and ${GAME.player1.spellMana} spell mana - HP: ${GAME.player1.hp} ♥️`)
             .setFields([
                 {
                     name: "Field",
