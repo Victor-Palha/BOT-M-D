@@ -17,7 +17,6 @@ export class ClientExtension extends Client {
         })
     }
     public commands: Collection<string, Command> = new Collection();
-    // public events: Collection<string, Event> = new Collection();
     public aliases: Collection<string, Command> = new Collection();
     public config: Config = config;
 

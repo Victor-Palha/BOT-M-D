@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder, TextChannel } from "discord.js";
 import { Command } from "../../interfaces";
 
 export const command: Command = {
@@ -6,6 +6,7 @@ export const command: Command = {
     description: "Show the help menu",
     aliases: ["h"],
     run: async (client, message, args)=>{
+        const channel = message.channel as TextChannel;
         const commands = client.commands.map((command)=>{
             return {
                 name: command.name,
@@ -23,7 +24,7 @@ export const command: Command = {
                 value: command.description
             })))
 
-        message.channel.send({
+        channel.send({
             embeds: [embed]
         })
     }

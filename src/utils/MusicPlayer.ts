@@ -1,4 +1,4 @@
-import { AudioPlayer, VoiceConnection, createAudioResource, joinVoiceChannel } from "@discordjs/voice";
+import { AudioPlayer, DiscordGatewayAdapterCreator, VoiceConnection, createAudioResource, joinVoiceChannel } from "@discordjs/voice";
 import { InternalDiscordGatewayAdapterCreator, Message } from "discord.js";
 import { downloadFromYoutube } from "./download-from-youtube";
 import { unlinkSync } from "fs";
@@ -45,7 +45,6 @@ export class MusicPlayer{
                 url,
                 path
             })
-
         }
         else{
             this.listeners.push({
@@ -57,7 +56,7 @@ export class MusicPlayer{
                 connection: joinVoiceChannel({
                     channelId: channel,
                     guildId: message.member?.voice.guild.id as string,
-                    adapterCreator: message.member?.voice.guild.voiceAdapterCreator as InternalDiscordGatewayAdapterCreator
+                    adapterCreator: message.member?.voice.guild.voiceAdapterCreator as DiscordGatewayAdapterCreator
                 })
             })
         }
@@ -100,7 +99,7 @@ export class MusicPlayer{
     async Stop(channelId: string){
         const seachChannel = this.listeners.find((listener)=>listener.channelId === channelId)
         if(seachChannel){
-            seachChannel.connection.destroy()
+            await seachChannel.connection.destroy()
             const deleteMusics = this.listeners.filter((listener)=>{
                 return listener.channelId === channelId
             })

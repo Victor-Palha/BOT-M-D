@@ -1,3 +1,4 @@
+import { TextChannel } from "discord.js";
 import { Command } from "../../interfaces";
 
 export const command: Command = {
@@ -5,6 +6,7 @@ export const command: Command = {
     description: "Ping!",
     aliases: ["pg"],
     run: async (client, message, args) => {
-        await message.channel.send(`${client.ws.ping}ms`);
+        const channel = message.channel as TextChannel;
+        await channel.send(`${client.ws.ping}ms`);
     }
 }

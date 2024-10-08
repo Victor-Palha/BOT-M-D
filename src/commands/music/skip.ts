@@ -1,6 +1,7 @@
 import { createAudioPlayer } from "@discordjs/voice"
 import { Command } from "../../interfaces"
 import { musicPlayer } from "../../utils/MusicPlayer"
+import { TextChannel } from "discord.js"
 
 export const command: Command = {
     name: "skip",
@@ -12,7 +13,8 @@ export const command: Command = {
             player: createAudioPlayer()
         })
         .catch((error)=>{
-            message.channel.send(error.message)
+            const channel = message.channel as TextChannel;
+            channel.send(error.message)
         })
     }
 }

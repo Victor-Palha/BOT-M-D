@@ -1,4 +1,4 @@
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder, TextChannel } from "discord.js";
 import { Command } from "../../interfaces";
 import { RollDice } from "../../utils/RollDice";
 
@@ -7,7 +7,9 @@ export const command: Command = {
     description: "Roll a dice",
     aliases: ["r"],
     run: async (client, message, args) => {
-        message.channel.send("Rolling a dice...");
+        const channel = message.channel as TextChannel;
+        
+        channel.send("Rolling a dice...")
         var modifierType: "plus" | "minus" | undefined = undefined;
         var modifier: number | undefined = undefined;
         if(args[0].includes("+")){
@@ -21,11 +23,11 @@ export const command: Command = {
         if(!amount) amount = 1;
         var dice: number = parseInt(args[0].split("d")[1]);
         if(!dice){
-            message.channel.send("You need to specify a dice dumbass!");
+            channel.send("You need to specify a dice dumbass!");
             return
         }
         
-        if(amount > 100 || amount < 1) return message.channel.send("Are you kidding me? You can't roll that amount of dices");
+        if(amount > 100 || amount < 1) return channel.send("Are you kidding me? You can't roll that amount of dices");
 
         const {dices, total, advantage, disadvantage} = RollDice({amount, dice, modifier, modifierType});
 
@@ -54,7 +56,7 @@ export const command: Command = {
                 })
             }
 
-        message.channel.send({
+        channel.send({
             embeds: [embed]
         })
     }
