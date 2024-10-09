@@ -1,6 +1,6 @@
 # The Bard - Discord Bot
-In the latest years all of the most famous _BOTS_ players of music was shut down by YouTube, Spotify and other music platforms. The Bard is a Discord Bot that you can add at your server to deal with this problem. The Bard is a bot that plays music from YouTube, and it's free to use.
-Of course, we don´t want the BOT be shut down, so we are not going to provide a public link to add it to your server. But you can clone this repository and run it on your own server.
+In recent years, many of the most popular music bots have been shut down by platforms like YouTube, Spotify, and others. The Bard is a Discord bot that you can add to your server to help address this issue. It streams music from YouTube and is free to use. 
+To ensure The Bard doesn't get taken down, we won't be providing a public link to add it directly to your server. However, you can clone this repository and run it on your own server.
 
 ## Features
 - Play music from YouTube - [!play <song url from youtube>]
